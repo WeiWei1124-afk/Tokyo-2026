@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>東京四日｜11/5–11/8</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="東京四日">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBEEE4; --paper:#FFF7EF; --ink:#4A2A20; --soft:#8B5E4B; --line:#F0CDB8;
+  --shu:#D9482F; --yama:#E89A2A; --akane:#A82A2E; --sakura:#F4B6B0; --kon:#3B2F63;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#2A1A17; --paper:#3B2621; --ink:#FBEEE2; --soft:#D7B3A0; --line:#5A3A30;
+    --shu:#F0714F; --yama:#F6C05A; --akane:#E8646A; --sakura:#F4B6B0; --kon:#9A88D8;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#2A1A17; --paper:#3B2621; --ink:#FBEEE2; --soft:#D7B3A0; --line:#5A3A30;
+  --shu:#F0714F; --yama:#F6C05A; --akane:#E8646A; --sakura:#F4B6B0; --kon:#9A88D8;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  font-size:17px;line-height:1.7}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 48px}
+a{color:var(--shu)}
+.num{font-family:"Fredoka","Noto Sans TC",sans-serif}
+
+/* hero */
+header h1{font-size:clamp(34px,9vw,52px);font-weight:900;line-height:1.1;margin:8px 0 4px;letter-spacing:.02em}
+header p{margin:0;color:var(--soft)}
+.stubs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:22px 0 8px}
+.stub{position:relative;border:0;cursor:pointer;border-radius:14px;padding:12px 4px 10px;
+  background:var(--paper);color:var(--ink);text-align:center;font:inherit;
+  box-shadow:inset 0 0 0 2px var(--line);transition:transform .15s}
+.stub::before,.stub::after{content:"";position:absolute;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--bg)}
+.stub::before{top:-7px}.stub::after{bottom:-7px}
+.stub .d{display:block;font-family:"Fredoka",sans-serif;font-size:40px;font-weight:700;line-height:1}
+.stub .w{display:block;font-size:13px;color:var(--soft)}
+.stub .t{display:block;font-size:13px;font-weight:700;margin-top:4px}
+.stub[aria-selected="true"]{background:var(--shu);color:#FFF7EF;box-shadow:none;transform:translateY(-3px)}
+.stub[aria-selected="true"] .w{color:#FFE3D2}
+.stub.disney{box-shadow:inset 0 0 0 2px var(--yama)}
+.stub.disney[aria-selected="true"]{background:var(--yama)}
+.stub.hanabi{box-shadow:inset 0 0 0 2px var(--kon)}
+.stub.hanabi[aria-selected="true"]{background:var(--kon)}
+.stub:focus-visible{outline:3px solid var(--kon);outline-offset:3px}
+
+/* weather */
+.wx{display:flex;gap:14px;align-items:center;background:var(--paper);border-radius:16px;padding:14px 16px;margin:18px 0 6px;border-left:6px solid var(--yama)}
+.wx .ico{font-size:40px;line-height:1}
+.wx .temp{font-family:"Fredoka",sans-serif;font-size:28px;font-weight:700;line-height:1.1}
+.wx .temp small{font-size:18px;color:var(--soft)}
+.wx .meta{font-size:14px;color:var(--soft)}
+.src{font-size:12px;color:var(--soft);margin:0 0 4px 4px}
+
+/* day */
+.day h2{font-size:26px;margin:22px 0 2px;font-weight:900}
+.day .sub{color:var(--soft);margin:0 0 14px}
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:58px;top:8px;bottom:8px;width:3px;background:var(--line);border-radius:2px}
+.tl li{display:grid;grid-template-columns:50px 1fr;gap:22px;padding:8px 0;position:relative}
+.tl li::before{content:"";position:absolute;left:53px;top:17px;width:13px;height:13px;border-radius:50%;background:var(--shu);box-shadow:0 0 0 3px var(--bg)}
+.day.dz .tl li::before{background:var(--yama)}
+.day.hb .tl li::before{background:var(--kon)}
+.tl time{font-family:"Fredoka",sans-serif;font-weight:700;color:var(--shu);padding-top:2px}
+.day.dz .tl time{color:var(--yama)}
+.day.hb .tl time{color:var(--kon)}
+.tl b{display:block;font-size:18px}
+.tl span{display:block;color:var(--soft);font-size:15px}
+.tl .go{display:inline-block;margin-top:4px;font-size:13px;background:color-mix(in srgb,var(--yama) 20%,transparent);color:var(--ink);padding:2px 10px;border-radius:999px}
+
+.note{margin:18px 0 0;padding:14px 16px;border-radius:16px;background:color-mix(in srgb,var(--sakura) 30%,var(--paper));font-size:15px}
+.note h3{margin:0 0 6px;font-size:16px;color:var(--akane)}
+.note ul{margin:0;padding-left:1.2em}
+
+/* sections */
+section.blk{margin-top:40px}
+section.blk h2{font-size:24px;font-weight:900;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+section.blk h2::before{content:"";width:10px;height:26px;border-radius:5px;background:var(--shu)}
+.hotel{background:var(--paper);border-radius:18px;padding:18px}
+.hotel .area{font-size:22px;font-weight:900;color:var(--shu);margin:0}
+.fl{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:2px dashed var(--line)}
+.fl:last-child{border:0}
+.fl b{font-family:"Fredoka","Noto Sans TC",sans-serif;font-size:20px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{width:64px;height:64px;border-radius:15px;flex:none}
+.hotel ul{padding-left:1.2em;margin:8px 0}
+.opt{margin-top:12px;padding-top:12px;border-top:2px dashed var(--line);font-size:15px}
+.chk{list-style:none;padding:0;margin:0}
+.chk li{background:var(--paper);border-radius:14px;margin-bottom:8px}
+.chk label{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;cursor:pointer}
+.chk input{width:22px;height:22px;accent-color:var(--shu);margin-top:3px;flex:none}
+.chk input:checked + span{text-decoration:line-through;color:var(--soft)}
+.chk small{display:block;color:var(--soft);font-size:13px}
+footer{margin-top:40px;font-size:13px;color:var(--soft)}
+@media (prefers-reduced-motion:reduce){.stub{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand"><img src="apple-touch-icon.png" alt=""><div><p>115 年 11 月・2 人</p><h1>東京四日</h1></div></div>
+  <p>台中 ⇄ 成田，11/6 迪士尼海洋，11/7 土浦花火</p>
+  <div class="stubs" role="tablist" aria-label="選擇日期">
+    <button class="stub" role="tab" data-i="0" aria-selected="true"><span class="w">11 月・四</span><span class="d">5</span><span class="t">抵達東京</span></button>
+    <button class="stub disney" role="tab" data-i="1" aria-selected="false"><span class="w">11 月・五</span><span class="d">6</span><span class="t">迪士尼</span></button>
+    <button class="stub hanabi" role="tab" data-i="2" aria-selected="false"><span class="w">11 月・六</span><span class="d">7</span><span class="t">土浦花火</span></button>
+    <button class="stub" role="tab" data-i="3" aria-selected="false"><span class="w">11 月・日</span><span class="d">8</span><span class="t">回台</span></button>
+  </div>
+</header>
+
+<main id="days"></main>
+
+<section class="blk">
+  <h2>機票與住宿</h2>
+  <div class="hotel">
+    <div class="fl"><span>去程 11/5（四）<br><small>星宇 JX314 台中 → 成田</small></span><b>09:15 → 13:25</b></div>
+    <div class="fl"><span>回程 11/8（日）<br><small>星宇 JX315 成田 → 台中</small></span><b>14:25 → 17:55</b></div>
+    <p style="margin:10px 0 0;font-size:15px">行李：手提 7kg、託運 23kg／人</p>
+  </div>
+  <div class="hotel" style="margin-top:12px">
+    <p class="area">Hotel Villa Fontaine 東京八丁堀</p>
+    <p style="margin:4px 0 8px">11/5 15:00 入住 → 11/8 11:00 退房，1 間房</p>
+    <ul>
+      <li>JR 京葉線八丁堀站到舞濱約 15 分鐘，迪士尼當天不用轉車</li>
+      <li>京葉線 1 站就到東京車站，搭 N'EX 往返成田</li>
+      <li>走路可到築地、銀座</li>
+    </ul>
+  </div>
+</section>
+
+<section class="blk">
+  <h2>行前清單</h2>
+  <ul class="chk" id="chk"></ul>
+</section>
+
+<footer>
+  天氣：出發前 16 天內會自動顯示 Open-Meteo 預報（需可連網的頁面），否則顯示東京 11 月上旬往年平均。臨行前可再看 <a href="https://tenki.jp/" target="_blank" rel="noopener">tenki.jp</a>。<br>
+  航班時間為假設值，請依實際機票調整
+</footer>
+</div>
+
+<script>
+const DAYS=[
+ {date:"2026-11-05",title:"抵達東京・丸之內夜景",sub:"下午抵達，先入住再輕鬆走走",lat:35.677,lon:139.770,
+  clim:{hi:19,lo:12,rain:25,icon:"⛅",txt:"晴時多雲"},
+  items:[
+   ["09:15","台中機場起飛","星宇 JX314，提早 2 小時到機場"],
+   ["13:25","抵達成田機場","日本比台灣快 1 小時；入境後買西瓜卡"],
+   ["14:30","成田 → 東京車站","N'EX 約 1 小時，或機場巴士到東京車站"],
+   ["15:40","東京 → 八丁堀","京葉線 1 站；京葉線月台離主站較遠，走約 10 分"],
+   ["16:00","入住 Villa Fontaine 八丁堀","放行李、換外套"],
+   ["17:00","東京車站・KITTE 屋頂花園","紅磚車站點燈，免門票","京葉線回東京車站 1 站"],
+   ["18:30","晚餐：有樂町高架橋下","居酒屋一條街，或東京車站拉麵街"]
+  ],
+  note:{h:"小提醒",li:["N'EX 有外國旅客來回優惠票，可在機場一次買好","傍晚後明顯轉涼，帶件薄外套"]}},
+ {date:"2026-11-06",title:"東京迪士尼海洋",sub:"25 週年期間，玩到閉園",lat:35.627,lon:139.885,cls:"dz",
+  clim:{hi:18,lo:12,rain:25,icon:"🌤️",txt:"晴，海邊風大"},
+  items:[
+   ["07:15","從飯店出發","八丁堀 → 舞濱約 15 分；再轉迪士尼度假區線到海洋站"],
+   ["08:00","排隊等入園","開園時間以官網為準；先開 App"],
+   ["09:00","衝夢幻泉鄉","冰雪奇緣、樂佩、彼得潘，一入園就用 App 拿等候證或買 DPA"],
+   ["11:00","驚魂古塔・玩具總動員瘋狂遊戲屋","熱門設施穿插排隊"],
+   ["12:30","午餐","11/1 起已開賣聖誕限定餐點，新品熱柚子抹茶可以試"],
+   ["14:00","地心探險・海底兩萬哩","下午人潮高峰，排室內設施"],
+   ["16:00","達菲專區逛周邊","11/2 起冬季活動「Making Winter Warm」"],
+   ["18:30","晚餐＋卡位","提早找好看水上夜間表演的位置"],
+   ["19:30","夜間水上表演","節目與時間以當日 App 為準"],
+   ["21:00","閉園返回飯店","舞濱 → 八丁堀約 15 分"]
+  ],
+  note:{h:"迪士尼當天注意",li:["門票是日期指定、浮動票價，盡早在官網或官方 App 購買","11/11 才開始聖誕活動，這天還沒有聖誕遊行","晚上海邊體感約 10°C，帶防風外套或薄羽絨","隔天要看花火，今晚早點睡"]}},
+ {date:"2026-11-07",title:"土浦全國花火競技大會",sub:"日本三大花火之一，跟團 10 小時",lat:36.08,lon:140.19,cls:"hb",
+  clim:{hi:18,lo:9,rain:25,icon:"🎆",txt:"晴，入夜後河畔很冷"},
+  items:[
+   ["08:00","築地場外市場早餐","週六店家多，玉子燒、海鮮丼","日比谷線八丁堀 → 築地 1 站，或步行約 20 分"],
+   ["10:00","回飯店休息、換保暖衣物","把暖暖包、行動電源帶齊"],
+   ["11:00","前往集合地點","集合時間與地點以旅遊平台憑證為準"],
+   ["14:00","抵達土浦","會場在桜川畔，逛屋台吃熱食"],
+   ["17:30","花火競技開始","約 2 萬發，預定 20:00 結束，保證有椅子（C 席）"],
+   ["20:30","搭團車回東京","散場人潮多，跟緊領隊"],
+   ["22:30","回到飯店","實際時間依團體行程"]
+  ],
+  note:{h:"看花火注意",li:["若遇荒天會延期到 11/14，那時你們已回台，先確認旅行社的退費規定","河畔晚上約 8–10°C，要穿羽絨、帶暖暖包和小毯子","訂購頁截圖顯示已售罄，請確認你們的訂單已成立"]}},
+ {date:"2026-11-08",title:"伴手禮・回台",sub:"下午的飛機，上午買完就出發",lat:35.681,lon:139.767,
+  clim:{hi:18,lo:10,rain:25,icon:"☀️",txt:"晴"},
+  items:[
+   ["08:00","飯店附近早餐","前一晚晚歸，睡飽一點"],
+   ["09:30","退房","最晚 11:00"],
+   ["09:45","東京車站 GranSta 買伴手禮","站內多數店家一早就開"],
+   ["10:45","東京車站 → 成田","N'EX 約 1 小時"],
+   ["12:00","成田機場報到","辦理免稅新制退稅"],
+   ["14:25","起飛回台中","星宇 JX315，17:55 抵達台中"]
+  ],
+  note:{h:"免稅新制（115 年 11 月起）",li:["購物時先付含稅價，離境時在機場辦退稅","免稅商品保持未拆、收據收好","機場多留時間處理退稅"]}}
+];
+
+const CHECK=[
+ ["ticket","買迪士尼海洋門票（11/6，2 張）","官網或官方 App，浮動票價"],
+ ["app","下載 Tokyo Disney Resort App","等候證、DPA、節目表都在這"],
+ ["hanabi","確認土浦花火團訂單","集合時間地點、延期退費規定"],
+ ["nex","N'EX 外國旅客來回票","成田 ⇄ 東京"],
+ ["vjw","填 Visit Japan Web","入境與海關 QR code"],
+ ["suica","準備西瓜卡或手機 Suica",""],
+ ["net","網卡／eSIM",""],
+ ["coat","薄羽絨、暖暖包、小毯子","迪士尼晚上和花火會場都冷"],
+ ["power","行動電源","花火當天手機會一直拍"]
+];
+
+const WMO=c=>c===0?["☀️","晴"]:c<=2?["🌤️","晴時多雲"]:c===3?["☁️","陰"]:c<=48?["🌫️","有霧"]:c<=67?["🌧️","雨"]:c<=77?["🌨️","雪"]:c<=82?["🌦️","陣雨"]:["⛈️","雷雨"];
+let live={};
+
+function render(i){
+  const d=DAYS[i];
+  const w=live[d.date];
+  const wx=w?{icon:WMO(w.code)[0],txt:WMO(w.code)[1],hi:Math.round(w.hi),lo:Math.round(w.lo),rain:w.rain,src:"Open-Meteo 預報"}
+           :{...d.clim,src:"11 月上旬往年平均"};
+  document.getElementById("days").innerHTML=`
+  <article class="day ${d.cls||''}" role="tabpanel">
+    <div class="wx"><div class="ico" aria-hidden="true">${wx.icon}</div>
+      <div><div class="temp num">${wx.hi}° <small>/ ${wx.lo}°</small></div>
+      <div class="meta">${wx.txt}・降雨機率約 ${wx.rain??"—"}%</div></div></div>
+    <p class="src">${wx.src}</p>
+    <h2>${d.title}</h2><p class="sub">${d.sub}</p>
+    <ol class="tl">${d.items.map(([t,b,s,g])=>`<li><time>${t}</time><div><b>${b}</b>${s?`<span>${s}</span>`:""}${g?`<em class="go" style="font-style:normal">🚃 ${g}</em>`:""}</div></li>`).join("")}</ol>
+    <div class="note"><h3>${d.note.h}</h3><ul>${d.note.li.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+  </article>`;
+  document.querySelectorAll(".stub").forEach(b=>b.setAttribute("aria-selected",b.dataset.i==i));
+}
+document.querySelectorAll(".stub").forEach(b=>b.addEventListener("click",()=>render(+b.dataset.i)));
+
+// checklist
+let done={};
+try{done=JSON.parse(localStorage.getItem("tokyo1105-chk")||"{}")}catch(e){}
+document.getElementById("chk").innerHTML=CHECK.map(([k,t,s])=>`<li><label><input type="checkbox" data-k="${k}" ${done[k]?"checked":""}><span>${t}${s?`<small>${s}</small>`:""}</span></label></li>`).join("");
+document.getElementById("chk").addEventListener("change",e=>{
+  done[e.target.dataset.k]=e.target.checked;
+  try{localStorage.setItem("tokyo1105-chk",JSON.stringify(done))}catch(err){}
+});
+
+render(0);
+
+// live forecast (works when hosted where network is allowed, within ~16 days)
+(async()=>{
+  try{
+    const results=await Promise.all(DAYS.map(d=>fetch(`https://api.open-meteo.com/v1/forecast?latitude=${d.lat}&longitude=${d.lon}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo&start_date=${d.date}&end_date=${d.date}`).then(r=>r.ok?r.json():null).catch(()=>null)));
+    results.forEach((j,i)=>{
+      if(j&&j.daily&&j.daily.time&&j.daily.temperature_2m_max[0]!=null){
+        live[DAYS[i].date]={code:j.daily.weather_code[0],hi:j.daily.temperature_2m_max[0],lo:j.daily.temperature_2m_min[0],rain:j.daily.precipitation_probability_max[0]};
+      }
+    });
+    const cur=[...document.querySelectorAll(".stub")].findIndex(b=>b.getAttribute("aria-selected")==="true");
+    render(cur<0?0:cur);
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
